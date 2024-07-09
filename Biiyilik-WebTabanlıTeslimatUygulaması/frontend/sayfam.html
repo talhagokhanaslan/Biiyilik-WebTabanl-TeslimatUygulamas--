@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sayfam</title>
+    <link rel="stylesheet" href="sayfam.css">
+</head>
+<body>
+    <div class="navbar">
+        <div class="logo">Bir İyilik</div>
+        <div class="user-profile">
+            <span id="welcome-message"></span>
+            <button class="logout-button" onclick="redirectToIndex()">Çıkış Yap</button>
+            
+        </div>
+    </div>
+
+    <div class="sidebar">
+        <ul>
+            <li><a href="#" class="menu-item" data-tab="profilim">Profilim</a></li>
+            <li><a href="#" class="menu-item" data-tab="siparislerim">Siparişlerim</a></li>
+            <li><a href="#" class="menu-item" data-tab="iste">İste</a></li>
+            <li><a href="#" class="menu-item" data-tab="teslim-et">Teslim Et</a></li>
+        </ul>
+    </div>
+
+    <div class="content">
+        <div id="profilim" class="tab-content">
+            <div class="form-container">
+                <form id="profilim-form">
+                    <div class="form-group">
+                        <label for="firstName">Ad:</label>
+                        <input type="text" id="firstName" name="firstName">
+                    </div>
+                    <div class="form-group">
+                        <label for="lastName">Soyad:</label>
+                        <input type="text" id="lastName" name="lastName">
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Telefon:</label>
+                        <input type="text" id="phone" name="phone">
+                    </div>
+                    <div class="form-group">
+                        <label for="address">Blok Adı:</label>
+                        <select id="address" name="address" required>
+                            <option value="">Lütfen bir blok seçin</option>
+                            <option value="Akasya">Akasya</option>
+                            <option value="Çınar">Çınar</option>
+                            <option value="Defne">Defne</option>
+                            <option value="Erguvan">Erguvan</option>
+                            <option value="Kardelen">Kardelen</option>
+                            <option value="Manolya">Manolya</option>
+                            <option value="Mimoza">Mimoza</option>
+                            <option value="Söğüt">Söğüt</option>
+                            <option value="Palmiye">Palmiye</option>
+                            <option value="Papatya">Papatya</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="roomNumber">Oda No:</label>
+                        <input type="text" id="roomNumber" name="roomNumber">
+                    </div>
+                    <div class="form-group">
+                        <label for="email">E-posta:</label>
+                        <input type="email" id="email" name="email">
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Şifre:</label>
+                        <input type="password" id="password" name="password">
+                    </div>
+                    <div class="button-group">
+                        <button type="submit">Güncelle</button>
+                        <button type="button" class="delete-button" onclick="deleteAccount()">Hesabımı Sil</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <div id="siparislerim" class="tab-content">
+            <h2>Siparişlerim</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Sipariş Tarihi</th>
+                        <th>Ürünler</th>
+                        <th>Durumu</th>
+                    </tr>
+                </thead>
+                <tbody id="siparislerTableBody">
+                    
+                </tbody>
+            </table>
+        </div>
+<!--
+         <script>
+document.addEventListener('DOMContentLoaded', function() {
+    // Siparişleri almak için fetch isteği yapalım
+    fetch('/api/siparisler')
+        .then(response => response.json())
+        .then(data => {
+            const siparislerTableBody = document.getElementById('siparislerTableBody');
+
+            // Verileri tabloya ekleyelim
+            data.forEach(siparis => {
+                const tr = document.createElement('tr');
+
+                const siparisTarihiTd = document.createElement('td');
+                siparisTarihiTd.textContent = new Date(siparis.order_date).toLocaleDateString(); // Sipariş tarihini uygun formatta göstermek için
+
+                const urunlerTd = document.createElement('td');
+                urunlerTd.textContent = siparis.products;
+
+                const durumuTd = document.createElement('td');
+                durumuTd.textContent = siparis.completed ? 'Siparişiniz Yolda' : 'Bekliyor';
+
+                tr.appendChild(siparisTarihiTd);
+                tr.appendChild(urunlerTd);
+                tr.appendChild(durumuTd);
+
+                
+                siparislerTableBody.appendChild(tr);
+            });
+        })
+        .catch(error => {
+            console.error('Siparişler getirilirken bir hata oluştu:', error);
+            // Hata durumunda kullanıcıya bilgi verilebilir
+        });
+});
+</script>
+-->
+
+    
+        <div id="iste" class="tab-content">
+            <div class="form-container second-form">
+                <form id="siparis-form">
+                    <div class="form-group">
+                        <label for="siparis">Siparişiniz:</label>
+                        <textarea id="siparis" name="siparis" rows="6" cols="50"></textarea>
+                    </div>
+                    <button type="button" onclick="siparisKaydet()">İste</button>
+                </form>
+            </div>
+
+            <div class="example-orders">
+                <h3>Bazı Örnek Siparişler</h3>
+                <ul>
+                    <li>Aylin 1 adet izole bant ve 5 litre su istedi</li>
+                    <li>Talha 2.5 litre içecek ve çekirdek istedi</li>
+                    <li>İsmail 2 adet tabak 1 adet tencere istedi</li>
+                </ul>
+            </div>
+
+
+        </div>
+        
+        <div id="teslim-et" class="tab-content">
+            <h2>Siparişler</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Sipariş Tarihi</th>
+                        <th>Ürünler</th>
+                        <th>Durumu</th>
+                    </tr>
+                </thead>
+                <tbody id="siparisTableBody">
+                    
+                </tbody>
+            </table>
+        </div>
+
+
+
+
+        <script>
+            
+            document.addEventListener('DOMContentLoaded', function() {
+    const siparisTableBody = document.getElementById('siparisTableBody');
+
+    // Siparişleri almak için fetch isteği
+    fetch('/api/siparislerr')
+        .then(response => response.json())
+        .then(data => {
+            // Verileri tabloya ekle
+            data.forEach(siparis => {
+                const tr = document.createElement('tr');
+
+                const siparisTarihiTd = document.createElement('td');
+                siparisTarihiTd.textContent = new Date(siparis.order_date).toLocaleDateString(); // Sipariş tarihini uygun format
+
+                const urunlerTd = document.createElement('td');
+                urunlerTd.textContent = siparis.products;
+
+                const durumuTd = document.createElement('td');
+                durumuTd.textContent = siparis.completed ? 'Siparişiniz Yolda' : 'Bekliyor';
+
+                tr.appendChild(siparisTarihiTd);
+                tr.appendChild(urunlerTd);
+                tr.appendChild(durumuTd);
+
+                // Teslim et butonu
+                const teslimEtTd = document.createElement('td');
+                const teslimEtButton = document.createElement('button');
+                teslimEtButton.textContent = 'Teslim Et';
+                teslimEtButton.addEventListener('click', function() {
+                    const confirmTeslim = confirm('Bu siparişi teslim etmek istediğinize emin misiniz?');
+
+                    if (confirmTeslim) {
+                        fetch(`/api/siparisler/${siparis.order_id}/teslimet`, { method: 'PUT' })
+                            .then(response => response.json())
+                            .then(result => {
+                                alert('Siparişi aldınız. Lütfen en kısa sürede adrese teslim edin.');
+                                durumuTd.textContent = 'Sipariş Alındı'; // Durumu güncelle
+                                siparis.completed = true; // İstemci tarafında tamamlandı 
+                            })
+                            .catch(error => {
+                                console.error('Sipariş teslim edilirken bir hata oluştu:', error);
+                                alert('Sipariş teslim edilirken bir hata oluştu.');
+                            });
+                    }
+                });
+
+                teslimEtTd.appendChild(teslimEtButton);
+                tr.appendChild(teslimEtTd);
+
+                // Bilgi butonu
+                const bilgiTd = document.createElement('td');
+                const bilgiButton = document.createElement('button');
+                bilgiButton.textContent = 'Bilgi';
+                bilgiButton.addEventListener('click', function() {
+                    alert(`Ad: Ece Aslan\nAdres: Manolya 101\nTelefon: 05515568735`);
+                });
+
+                bilgiTd.appendChild(bilgiButton);
+                tr.appendChild(bilgiTd);
+
+                siparisTableBody.appendChild(tr);
+            });
+        })
+        .catch(error => {
+            console.error('Siparişler getirilirken bir hata oluştu:', error);
+            // Hata durumunda kullanıcıya bilgi
+        });
+});
+
+            </script>
+
+
+
+        
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </div>
+
+    <script src="sayfam.js"></script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const firstname = localStorage.getItem('firstname');
+            if (firstname) {
+                document.getElementById('welcome-message').textContent = `Hoş geldin `;
+            }
+        });
+
+        function redirectToIndex() {
+            window.location.href = 'index.html';
+        }
+
+        function deleteAccount() {
+            const confirmDelete = confirm('Hesabınızı silmek istediğinize emin misiniz?');
+
+            if (confirmDelete) {
+                const userId = localStorage.setItem('userId', id); // kullanici.id yerine kullanıcının gerçek kimliğini kullan
+
+                if (!userId) {
+                    alert('Kullanıcı bilgisi alınamadı.');
+                    return;
+                }
+
+                fetch('/api/deleteAccount', {
+                    method: 'DELETE',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ userId: parseInt(userId, 10) }) // Kullanıcı kimliğini integer olarak gönderme
+                })
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Hesap silme işlemi başarısız.');
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    alert('Hesabınız başarıyla silindi.');
+                    window.location.href = 'index.html'; // Hesap silindiğinde ana sayfaya yönlendir
+                })
+                .catch(error => {
+                    console.error('Hesap silinirken bir hata oluştu:', error);
+                    alert('Hesap silinirken bir hata oluştu.');
+                });
+            }
+        }
+
+
+    </script>
+</body>
+</html>

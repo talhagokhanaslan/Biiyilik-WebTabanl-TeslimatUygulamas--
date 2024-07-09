@@ -1,0 +1,86 @@
+body {
+    font-family: Arial, sans-serif; /* Arial veya sans-serif font kullanımı */
+    margin: 0;
+}
+
+.navbar {
+    background-color: navy; /* Navbar arkaplan rengi */
+    color: white; /* Navbar metin rengi */
+    padding: 10px 20px; /* Navbar iç boşluk */
+    display: flex; /* Flexbox kullanımı */
+    justify-content: space-between; /* İçerikleri sağa ve sola hizalama */
+}
+
+.logo {
+    font-size: 24px; /* Logo metin boyutu */
+}
+
+.nav-links {
+    display: flex; /* Flexbox kullanımı */
+    align-items: center; /* İçerikleri dikeyde hizalama */
+}
+
+.nav-links a {
+    color: white; /* Link metin rengi */
+    text-decoration: none; /* Link altı çizgi kaldırma */
+    padding: 0 10px; /* Link iç boşluk */
+    transition: color 0.3s; /* Link hover geçiş efekti */
+}
+
+.nav-links a:hover {
+    color: #cccccc; /* Link hover metin rengi */
+}
+
+.container {
+    width: 50%; /* Container genişliği */
+    margin: 20px auto; /* Container dikey boşluk */
+    text-align: center; /* Metni ortala */
+}
+
+.input-group {
+    margin-bottom: 20px; /* Input gruplar arası boşluk */
+}
+
+label {
+    display: inline-block; /* Label'ı yanına almak için */
+    width: 100px; /* Label genişliği */
+    font-weight: bold; /* Kalın font */
+    margin-right: 10px; /* Label ile input arası boşluk */
+}
+
+input[type="text"],
+input[type="tel"],
+input[type="email"],
+input[type="password"],
+select {
+    width: calc(100% - 120px); /* Input genişliği */
+    padding: 10px; /* Input iç boşluk */
+    border-radius: 5px; /* Input köşe yuvarlama */
+    border: 1px solid #ccc; /* Input kenarlık */
+    font-size: 16px; /* Input font büyüklüğü */
+    box-sizing: border-box; /* Padding ve border içinde genişlik hesaplaması */
+}
+
+button[type="submit"] {
+    padding: 10px 20px; /* Buton iç boşluk */
+    font-size: 16px; /* Buton font büyüklüğü */
+    border-radius: 5px; /* Buton köşe yuvarlama */
+    border: none; /* Buton kenarlık */
+    background-color: navy; /* Buton arkaplan rengi */
+    color: white; /* Buton yazı rengi */
+    cursor: pointer; /* Buton imleç tipi */
+    transition: background-color 0.3s; /* Buton hover geçiş efekti */
+}
+
+button[type="submit"]:hover {
+    background-color: #004080; /* Buton hover arkaplan rengi */
+}
+
+.frame {
+    border: 2px solid navy; /* Çerçeve kenarlık */
+    border-radius: 10px; /* Çerçeve köşe yuvarlama */
+    padding: 20px; /* Çerçeve iç boşluk */
+    width: 50%; /* Çerçeve genişliği */
+    margin: 50px auto 20px; /* Sayfanın üstünden 50px, alttan 20px ve yatayda ortalamak için */
+}
+

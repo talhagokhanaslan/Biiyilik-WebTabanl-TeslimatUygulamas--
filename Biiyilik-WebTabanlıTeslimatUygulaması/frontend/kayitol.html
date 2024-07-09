@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kayıt Ol</title>
+    <link rel="stylesheet" href="kayitol.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+    <!-- Üst çubuk -->
+    <div class="navbar">
+        <div class="logo">Bir İyilik</div> <!-- Logo -->
+        <div class="nav-links">
+            <a href="index.html">Ana Sayfaya Dön</a> <!-- Ana sayfaya dönme bağlantısı -->
+        </div>
+    </div>
+
+    <!-- Ana içerik alanı -->
+    <div class="frame">
+        <div class="container">
+            <h2>Kayıt Olmak için Kişisel Bilgilerinizi Giriniz</h2> <!-- Başlık -->
+            <!-- Kayıt formu -->
+            <form id="registrationForm">
+                <div class="input-group">
+                    <label for="firstName">İsim:</label> <!-- İsim etiketi -->
+                    <input type="text" id="firstName" name="firstName" required> <!-- İsim giriş kutusu -->
+                </div>
+                <div class="input-group">
+                    <label for="lastName">Soyisim:</label> <!-- Soyisim etiketi -->
+                    <input type="text" id="lastName" name="lastName" required> <!-- Soyisim giriş kutusu -->
+                </div>
+                <div class="input-group">
+                    <label for="phone">Telefon:</label> <!-- Telefon etiketi -->
+                    <input type="tel" id="phone" name="phone" required> <!-- Telefon giriş kutusu -->
+                </div>
+                <div class="input-group">
+                    <label for="address">Blok Adı:</label> <!-- Adres etiketi -->
+                    <select id="address" name="address" required> <!-- Adres seçim kutusu -->
+                        <option value="">Lütfen bir blok seçin</option> <!-- Boş seçenek -->
+                        <!-- Adres seçenekleri -->
+                        <option value="Akasya">Akasya</option>
+                        <option value="Çınar">Çınar</option>
+                        <option value="Defne">Defne</option>
+                        <option value="Erguvan">Erguvan</option>
+                        <option value="Kardelen">Kardelen</option>
+                        <option value="Manolya">Manolya</option>
+                        <option value="Mimoza">Mimoza</option> 
+                        <option value="Söğüt">Söğüt</option>
+                        <option value="Palmiye">Palmiye</option> 
+                        <option value="Papatya">Papatya</option>                       
+                    </select>
+                </div>
+                <div class="input-group">
+                    <label for="roomNumber">Oda No:</label> <!-- Oda Numarası etiketi -->
+                    <input type="text" id="roomNumber" name="roomNumber" required> <!-- Oda Numarası giriş kutusu -->
+                </div>
+                <div class="input-group">
+                    <label for="email">E-posta:</label> <!-- E-posta etiketi -->
+                    <input type="email" id="email" name="email" required> <!-- E-posta giriş kutusu -->
+                </div>
+                <div class="input-group">
+                    <label for="password">Şifre:</label> <!-- Şifre etiketi -->
+                    <input type="password" id="password" name="password" required> <!-- Şifre giriş kutusu -->
+                </div>
+                <button type="submit">Kayıt Ol</button> <!-- Kayıt ol butonu -->
+            </form>
+        </div>
+    </div>
+
+    <script>
+        $(document).ready(function() {
+            $('#registrationForm').submit(function(event) {
+                event.preventDefault(); // Formun normal gönderimini engelle
+
+                $.ajax({
+                    url: '/kayitol',
+                    method: 'POST',
+                    data: $(this).serialize(),
+                    success: function(response) {
+                        alert(response.message); // Başarı mesajını göster
+                        if (response.message === 'Kayıt başarılı!') {
+                            window.location.href = '/index.html'; // Kayıt başarılı ise yönlendirme yap
+                        }
+                    },
+                    error: function(jqXHR) {
+                        alert(jqXHR.responseJSON.message); // Hata mesajını göster
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>

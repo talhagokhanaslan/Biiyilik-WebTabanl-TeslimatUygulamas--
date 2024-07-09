@@ -1,0 +1,293 @@
+/* Genel stiller */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif; /* Yazı tipi ayarı */
+}
+
+/* Yan çubuk stilleri */
+.sidebar {
+    background-color: navy; /* Arka plan rengi */
+    color: white; /* Metin rengi */
+    width: 120px; /* Genişlik */
+    max-height: 90vh; /* Maksimum yükseklik (sayfanın %90'ından fazlasını kaplamaz) */
+    position: fixed; /* Sabit konum */
+    top: 150px; /* Navbar'ın altına yerleştir */
+    left: 0; /* Sol tarafa yerleştir */
+    padding-top: 0px; /* Yazıların 50px aşağıdan başlaması */
+    overflow-y: auto; /* Eğer içerik boyutu sidebar'ın boyutunu aşarsa kaydırma çubuğunu göster */
+    border-top-right-radius: 10px; /* Sağ üst köşe yuvarlatma */
+    border-bottom-right-radius: 10px; /* Sağ alt köşe yuvarlatma */
+}
+
+ul {
+    list-style-type: none; /* Liste işaretlerini kaldır */
+    padding: 0; /* İç boşlukları kaldır */
+}
+
+li {
+    padding: 10px; /* İç boşluk */
+    margin-top: 5px; /* Liste öğeleri arasındaki boşluk */
+}
+
+a {
+    color: white; /* Bağlantı metni rengi */
+    text-decoration: none; /* Alt çizgiyi kaldır */
+    font-weight: bold; /* Kalın yazı */
+}
+
+a:hover {
+    background-color: rgba(255, 255, 255, 0.2); /* Üzerine gelince arka plan rengi değişimi */
+}
+
+/* İçerik bölümü stilleri */
+.content {
+    margin-left: 150px; /* Yan çubuğun genişliği kadar sola itme */
+    margin-top: 50px; /* Navbar'ın yüksekliği kadar üstten itme */
+    padding: 20px; /* İç boşluk */
+}
+
+/* Üst çubuk stilleri */
+.navbar {
+    background-color: navy; /* Arka plan rengi */
+    color: white; /* Metin rengi */
+    padding: 10px 20px; /* İç boşluklar */
+    display: flex; /* Flexbox düzeni */
+    justify-content: space-between; /* Elemanları yatayda dağıtma */
+    align-items: center; /* Dikeyde ortalama */
+    height: 50px; /* Navbar yüksekliği */
+    position: fixed; /* Sabit konum */
+    top: 0;
+    left: 0;
+    width: 100%; /* Tam genişlik */
+    z-index: 1000; /* Üst üste bindirmede öncelik */
+}
+
+.logo {
+    font-size: 24px; /* Yazı tipi boyutu */
+    font-weight: bold; /* Kalın yazı */
+}
+
+#welcome-message {
+    color: #add8e6; /* Hoş geldin mesajı için açık mavi renk */
+    font-weight: bold;
+}
+
+.user-profile {
+    display: flex; /* Flexbox düzeni */
+    align-items: center; /* Dikeyde ortalama */
+}
+
+.user-profile img {
+    width: 30px; /* Görsel genişliği */
+    height: 30px; /* Görsel yüksekliği */
+    margin-right: 10px; /* Sağ boşluk */
+}
+
+.logout-button {
+    background-color: transparent; /* Şeffaf arka plan */
+    color: white; /* Metin rengi */
+    border: none; /* Kenarlık yok */
+    cursor: pointer; /* Fare imlecini işaretçi yap */
+    font-size: 16px; /* Yazı tipi boyutu */
+    margin-right: 25px; /* Sağ boşluk */
+}
+
+.logout-button:hover {
+    background-color: rgba(255, 255, 255, 0.2); /* Üzerine gelince arka plan rengi değişimi */
+}
+
+/* Tab içerik stilleri */
+.tab-content {
+    display: none; /* Başlangıçta gizli */
+}
+
+.tab-content.active {
+    display: block; /* Aktif olduğunda görünür yap */
+}
+
+/* Profilim form stil */
+.form-container {
+    
+    border: 2px solid navy; /* Çerçeve kenarlığı */
+    padding: 20px; /* İç boşluk */
+    border-radius: 8px; /* Köşeleri yuvarlat */
+    max-width: 600px; /* Maksimum genişlik */
+    margin: 20px auto; /* Ortala */
+    background-color: white; /* Arka plan rengi */
+}
+
+#profilim-form {
+    display: flex; /* Flexbox düzeni */
+    flex-direction: column; /* Elemanları dikeyde yerleştir */
+    gap: 10px; /* Alanlar arasında boşluk bırak */
+}
+
+.form-group {
+    display: flex; /* Flexbox düzeni */
+    align-items: center; /* Elemanları yatayda hizala */
+    margin-bottom: 10px; /* Alt boşluk */
+}
+
+#profilim-form label {
+    width: 150px; /* Label genişliği */
+    font-weight: bold; /* Kalın yazı */
+    margin-right: 10px; /* Sağ boşluk */
+    font-size: 14px; /* Yazı tipi boyutu */
+    color: #333; /* Metin rengi */
+    text-align: right; /* Metni sağa hizala */
+}
+
+#profilim-form input,
+#profilim-form select {
+    flex: 1; /* Kalan alanı kapla */
+    padding: 10px; /* İç boşluk */
+    border: 1px solid #ccc; /* Kenarlık rengi */
+    border-radius: 4px; /* Kenarların yuvarlatılması */
+    font-size: 14px; /* Yazı tipi boyutu */
+    outline: none; /* Odak göstergesini kaldır */
+    transition: border-color 0.3s ease-in-out; /* Geçiş efekti */
+}
+
+#profilim-form input:focus,
+#profilim-form select:focus {
+    border-color: #007bff; /* Odaklanıldığında kenarlık rengi */
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5); /* Odaklanıldığında gölge efekti */
+}
+
+#profilim-form .button-group {
+    display: flex; /* Flexbox düzeni */
+    justify-content: space-between; /* Butonları yatayda dağıt */
+}
+
+#profilim-form button {
+    background-color: #007bff; /* Buton arka plan rengi */
+    color: white; /* Buton metin rengi */
+    border: none; /* Kenarlık yok */
+    padding: 8px 12px; /* İç boşluk */
+    border-radius: 4px; /* Kenarların yuvarlatılması */
+    cursor: pointer; /* Fare imlecini işaretçi yap */
+    font-size: 14px; /* Yazı tipi boyutu */
+    transition: background-color 0.3s ease-in-out; /* Geçiş efekti */
+}
+
+#profilim-form button:hover {
+    background-color: #0056b3; /* Üzerine gelince arka plan rengi değişimi */
+}
+
+#profilim-form .delete-button {
+    background-color: #ff4d4d; /* Kırmızı arka plan rengi */
+}
+
+#profilim-form .delete-button:hover {
+    background-color: #cc0000; /* Üzerine gelince daha koyu kırmızı */
+}
+
+/* Tablo stilleri */
+table {
+    width: 100%; /* Tam genişlik */
+    border-collapse: collapse; /* Kenarları birleştir */
+    margin-bottom: 20px; /* Alt boşluk */
+}
+
+th, td {
+    border: 1px solid #ddd; /* Hücre kenarlıkları */
+    padding: 8px; /* İç boşluk */
+    text-align: left; /* Metin hizalaması */
+}
+
+th {
+    background-color: #f2f2f2; /* Başlık hücresi arka plan rengi */
+    font-weight: bold; /* Kalın yazı */
+}
+
+.button-group {
+    display: flex;
+    gap: 10px;
+    justify-content: flex-end; /* Butonları sağa hizala */
+}
+
+.update-button, .delete-button {
+    padding: 10px 20px; /* Buton iç boşluğu */
+    border-radius: 4px; /* Buton köşe yuvarlama */
+    font-size: 14px; /* Yazı tipi boyutu */
+    cursor: pointer; /* Fare imleci tipi */
+    transition: background-color 0.3s ease-in-out; /* Buton hover geçiş efekti */
+}
+
+.update-button {
+    background-color: navy; /* Güncelle butonu arka plan rengi */
+    color: white; /* Güncelle butonu yazı rengi */
+    border: none; /* Kenarlık yok */
+    flex-shrink: 0; /* Daralabilirlik özelliğini kapat */
+    width: 100px; /* Sabit genişlik */
+    
+}
+
+.delete-button {
+    background-color: transparent; /* Hesabımı Sil butonu arka plan rengi */
+    color: navy; /* Hesabımı Sil butonu yazı rengi */
+    border: 1px solid navy; /* Hesabımı Sil butonu kenarlık */
+    
+}
+
+
+/* sayfam.css */
+
+.second-form{
+    max-width: 500px;
+    margin: 75px auto;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+label {
+    display: block;
+    font-weight: bold;
+}
+
+textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    resize: vertical;
+}
+
+button {
+    background-color: #007bff;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #45a049;
+}
+
+.example-orders {
+    text-align: center;
+}
+
+.example-orders h3 {
+    margin-bottom: 10px;
+}
+
+.example-orders ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.example-orders ul li {
+    margin-bottom: 5px;
+}
+

@@ -1,0 +1,207 @@
+/* Genel stiller */
+body {
+    background: url('arkaplan.jpg') no-repeat center center fixed; /* Arka plan resmi */
+    background-size: cover; /* Arka plan resminin ekran boyutuna uyum sağlaması */
+    margin: 0; /* Kenar boşluğu kaldır */
+    padding: 0; /* İç boşluk kaldır */
+    height: 100vh; /* Ekran yüksekliği kadar genişlik */
+    display: flex; /* Flexbox düzeni */
+    flex-direction: column; /* Elemanları dikeyde yerleştir */
+    justify-content: space-between; /* Dikeyde eşit aralıklarla yerleştir */
+    align-items: center; /* Yatayda ortala */
+    color: rgb(255, 255, 255); /* Metin rengi */
+    font-family: Arial, sans-serif; /* Yazı tipi */
+}
+
+/* Üst çubuk stilleri */
+.navbar {
+    width: 100%; /* Tam genişlik */
+    background-color: rgba(0, 0, 128, 0.8); /* Arkaplan rengi */
+    padding: 10px 20px; /* İç boşluklar */
+    display: flex; /* Flexbox düzeni */
+    justify-content: space-between; /* Elemanları yatayda dağıt */
+    align-items: center; /* Dikeyde ortala */
+    position: fixed; /* Sabit konum */
+    top: 0; /* Üst taraftan başla */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Gölge */
+}
+
+.navbar .logo {
+    font-size: 24px; /* Yazı tipi boyutu */
+    margin-left:20px; /* Sol boşluk */
+}
+
+.navbar .nav-links {
+    display: flex; /* Flexbox düzeni */
+    gap: 10px; /* Elemanlar arası boşluk */
+}
+
+.navbar a {
+    color: white; /* Metin rengi */
+    text-decoration: none; /* Alt çizgiyi kaldır */
+    padding: 10px 20px; /* İç boşluklar */
+    border-radius: 5px; /* Kenar yuvarlatma */
+    background-color: navy; /* Arkaplan rengi */
+    transition: background-color 0.3s; /* Geçiş efekti */
+}
+
+.navbar a:hover {
+    background-color: #004080; /* Üzerine gelince arka plan rengi değişimi */
+}
+
+
+
+#forgotPassword {
+    display: block;
+    margin-top: 10px;
+    font-size: 12px; /* Daha küçük yazı boyutu */
+    color: white; /* Beyaz yazı rengi */
+    text-decoration: none; /* Altını çizme */
+    text-align: center; /* Yazıyı ortalama */
+    cursor: pointer;
+}
+
+
+
+
+
+
+
+/* Ana içerik alanı */
+.container {
+    text-align: center; /* Metni ortala */
+    display: flex; /* Flexbox düzeni */
+    flex-direction: column; /* Elemanları dikeyde yerleştir */
+    align-items: center; /* Yatayda ortala */
+    justify-content: center; /* Dikeyde ortala */
+    flex: 1; /* Esneklik */
+}
+
+
+/* Input stilleri */
+input[type="text"] {
+    padding: 10px; /* İç boşluk */
+    font-size: 16px; /* Yazı tipi boyutu */
+    border-radius: 5px; /* Kenar yuvarlatma */
+    border: 1px solid #ccc; /* Kenarlık rengi */
+    width: 250px; /* Genişlik */
+    box-sizing: border-box; /* Kenarlık ve dolguyu dahil et */
+}
+
+/* Buton stilleri */
+button {
+    padding: 10px 20px; /* İç boşluklar */
+    font-size: 16px; /* Yazı tipi boyutu */
+    border-radius: 5px; /* Kenar yuvarlatma */
+    border: none; /* Kenarlık yok */
+    background-color: navy; /* Arkaplan rengi */
+    color: white; /* Metin rengi */
+    cursor: pointer; /* İmleç tipi */
+    transition: background-color 0.3s; /* Geçiş efekti */
+}
+
+button:hover {
+    background-color: #004080; /* Üzerine gelince arka plan rengi değişimi */
+}
+
+/* Footer stilleri */
+footer {
+    width: 100%; /* Tam genişlik */
+    background-color: rgba(0, 0, 128, 0.8); /* Arkaplan rengi */
+    text-align: center; /* Metni ortala */
+    padding: 20px; /* İç boşluklar */
+    box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.1); /* Gölge */
+    position: fixed; /* Sabit konum */
+    bottom: 0; /* Alt taraftan başla */
+    left: 0; /* Sol taraftan başla */
+}
+
+/* Mevcut stiller */
+.dropdown {
+    position: relative; /* Göreceli konum */
+    display: inline-block; /* İnline blok */
+}
+
+.dropdown-content {
+    display: none; /* Başlangıçta gizli */
+    position: absolute; /* Sabit konum */
+    background-color: #f9f9f9; /* Arkaplan rengi */
+    min-width: 160px; /* Minimum genişlik */
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2); /* Gölge */
+    z-index: 1; /* Üst üste binme */
+    border-radius: 5px; /* Kenar yuvarlatma */
+    padding: 10px; /* İç boşluklar */
+}
+
+.dropdown-content form {
+    margin-bottom: 0; /* Alt boşluk */
+}
+
+.dropdown:hover .dropdown-content {
+    display: block; /* Üzerine gelince görünür yap */
+}
+
+/* Dropdown menüyü sağa alma*/
+.dropdown-content {
+    display: none; /* Başlangıçta gizli */
+    position: absolute; /* Sabit konum */
+    background-color: #0366d6; /* Mavi renk */
+    min-width: 240px; /* Minimum genişlik */
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2); /* Gölge */
+    z-index: 1; /* Üst üste binme */
+    border-radius: 5px; /* Kenar yuvarlatma */
+    padding: 10px; /* İç boşluklar */
+    /* dropdown menüyü sağa alma */
+    right: 0;
+}
+
+/* Dropdown menüdeki kelimelerin rengi */
+.dropdown-content a {
+    color: white; /* Beyaz renk */
+    display: block; /* Blok olarak görüntüle */
+    padding: 10px; /* İç boşluklar */
+    text-decoration: none; /* Alt çizgiyi kaldır */
+}
+
+/* Dropdown menüdeki kelimelerin hover rengi */
+.dropdown-content a:hover {
+    background-color: #0044cc; /* Koyu mavi renk */
+}
+
+/* Kullanıcı adı ve şifre textbox'ları için stil */
+input[type="text"],
+input[type="password"] {
+    padding: 10px; /* İç boşluk */
+    font-size: 16px; /* Yazı tipi boyutu */
+    border-radius: 5px; /* Kenar yuvarlatma */
+    border: 1px solid #ccc; /* Kenarlık rengi */
+    width: 100%; /* Tam genişlik */
+    box-sizing: border-box; /* Kenarlık ve dolguyu dahil et */
+    margin-bottom: 10px; /* Alt boşluk */
+}
+
+/* Giriş butonu stil */
+button[type="submit"] {
+    padding: 10px 20px; /* İç boşluklar */
+    font-size: 16px; /* Yazı tipi boyutu */
+    border-radius: 5px; /* Kenar yuvarlatma */
+    border: none; /* Kenarlık yok */
+    background-color: navy; /* Arkaplan rengi */
+    color: white; /* Metin rengi */
+    cursor: pointer; /* İmleç tipi */
+    transition: background-color 0.3s; /* Geçiş efekti */
+}
+
+button[type="submit"]:hover {
+    background-color: #004080; /* Üzerine gelince arka plan rengi değişimi */
+}
+
+.close {
+    visibility: hidden; /* Görünürlüğü gizle */
+}
+
+/* Dropdown menüdeki giriş butonunu ortala */
+.dropdown-content button[type="submit"] {
+    margin: 0 auto; /* Dikeyde ve yatayda ortala */
+    display: block; /* Blok olarak görüntüle */
+}

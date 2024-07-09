@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bir İyilik</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Navigasyon çubuğu -->
+    <div class="navbar">
+        <!-- Logo -->
+        <div class="logo">Bir İyilik</div>
+        <!-- Navigasyon bağlantıları -->
+        <div class="nav-links">
+            <!-- Giriş dropdown menüsü -->
+            <div class="dropdown" id="loginDropdown">
+                <button class="dropbtn">Giriş</button>
+                <div class="dropdown-content" id="loginPopup">
+                    <span class="close" id="closePopup">&times;</span>
+                    <h2>Giriş Yap</h2>
+                    <!-- Giriş formu -->
+                    <form id="loginForm" action="/login" method="POST">
+                        <label for="email">E-posta:</label><br>
+                        <input type="text" id="email" name="email" required><br>
+                        <label for="password">Şifre:</label><br>
+                        <input type="password" id="password" name="password" required><br>
+                        <a href="sifremi_unuttum.html" id="forgotPassword">Şifremi Unuttum</a><br><br>
+                        <button type="submit">Giriş</button>
+                    </form>
+                </div>
+            </div>
+            <a href="kayitol.html">Kayıt</a>
+        </div>
+    </div>
+    <!-- Ana içerik -->
+    <div class="container">
+        <h1>Merhaba</h1>
+        <!-- Sipariş girişi -->
+        <div class="input-group">
+            <input type="text" placeholder="Siparişinizi girin">
+            <button type="button">İste</button>
+        </div>
+    </div>
+    <!-- Footer -->
+    <footer>
+        <p>Bir İyilik, Ege Üniversitesi Öğrenci Köyüne özel olarak geliştirilmiş bir teslimat uygulamasıdır.
+             İhtiyacın olan ürünleri yazarak en kısa sürede kapından teslim alabilirsin.</p>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        // DOM yüklendiğinde çalışacak fonksiyonlar
+        document.addEventListener('DOMContentLoaded', function() {
+            const registerLink = document.querySelector('.nav-links a');
+            const loginButton = document.querySelector('.dropbtn');
+            const loginPopup = document.getElementById('loginPopup');
+            const closePopup = document.getElementById('closePopup');
+            const forgotPasswordLink = document.getElementById('forgotPassword');
+
+            // Giriş butonuna tıklanınca popup açılması
+            loginButton.addEventListener('click', function(event) {
+                event.preventDefault();
+                loginPopup.style.display = 'block';
+            });
+
+            // Popup kapatma
+            closePopup.addEventListener('click', function() {
+                loginPopup.style.display = 'none';
+            });
+
+            // Şifremi unuttum butonuna tıklandığında mesajı göster
+            forgotPasswordLink.addEventListener('click', function(event) {
+                event.preventDefault();
+                alert('Lütfen yönetici ile iletişime geçin.');
+            });
+
+            // Kayıt linkine tıklanınca kaydol sayfasına yönlendirme
+            registerLink.addEventListener('click', function(event) {
+                event.preventDefault();
+                window.location.href = 'kayitol.html';
+            });
+
+            // Giriş formunun gönderimini engelleme ve fetch ile POST isteği gönderme
+            const loginForm = document.getElementById('loginForm');
+            loginForm.addEventListener('submit', function(event) {
+                event.preventDefault();
+                
+                const email = document.getElementById('email').value;
+                const password = document.getElementById('password').value;
+                
+                fetch('/login', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/x-www-form-urlencoded',
+                    },
+                    body: `email=${encodeURIComponent(email)}&password=${encodeURIComponent(password)}`
+                })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.message === 'Giriş başarılı.') {
+
+                        alert('Giriş başarılı sayfanıza yönlendiriliyorsunuz');
+
+                        localStorage.setItem('firstname', data.firstname);
+
+                        window.location.href = 'sayfam.html'
+                        // Başarılı giriş sonrası yapılacak işlemler
+                    } else {
+                        alert('Geçersiz email veya şifre. Deneme');
+                    }
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                });
+                
+            });
+        });
+    </script>
+</body>
+</html>
